@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+        }
+
+        .block {
+            width: 300px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 70%;
+            padding: 6px;
+        }
+
+        button {
+            padding: 6px 10px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin: 15px auto;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="block">
+        <h2>Todo List</h2>
+        <input type="text" id="todoInput" placeholder="Enter task">
+        <button onclick="addTodo()">Add To List</button>
+        <ul id="todoList"></ul>
+    </div>
+
+    <script>
+        let todos = [];
+
+        function addTodo() {
+            let task = document.getElementById("todoInput").value;
+            if (task !== "") {
+                todos.push(task);
+                displayTodos();
+                document.getElementById("todoInput").value = "";
+            }
+        }
+
+        function displayTodos(){
+            let list = document.getElementById("todoList");
+            list.innerHTML = "";
+
+            todos.forEach(todo => {
+                let li = document.createElement("li");
+                li.textContent = todo;
+                list.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
