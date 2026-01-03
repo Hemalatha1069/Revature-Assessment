@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Launch Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: black;
+        }
+
+        .box {
+            width: 400px;
+            margin: 60px auto;
+            background: gray;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: maroon;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #load {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        #details {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Space Launch Information</h2>
+
+        <button onclick="loadLaunch()">Load Latest Launch</button>
+
+        <div id="load"></div>
+        <div id="details"></div>
+    </div>
+
+    <script>
+        function loadLaunch() {
+            let load = document.getElementById("load");
+            let details = document.getElementById("details");
+
+            load.innerText = "Loading latest launch details...";
+            details.innerHTML="";
+
+            let launchPromise = new Promise((resolve, reject) => {
+                fetch("https://api.spacexdata.com/v4/launches/latest")
+                .then(response => {
+                    if(!response.ok) {
+                        reject("Failed to fetch details");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(error => {
+                    reject("Error ocucurred");
+                });
+            });
+
+            launchPromise
+                .then(result => {
+                    details.innerHTML = "Mission Name: " + result.name;
+                })
+                .catch(error => {
+                    details.innerHTML = error;
+                })
+                .finally(() => {
+                    load.innerText = "";
+                });
+        }
+    </script>
+</body>
+</html>
