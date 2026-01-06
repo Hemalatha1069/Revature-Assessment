@@ -1,0 +1,179 @@
+Assignment Question
+ 
+Column Name	Data Type	Description
+emp_id	NUMBER (IDENTITY, PK)	Auto-increment employee ID
+emp_name	VARCHAR2(30)	Employee name
+gender	VARCHAR2(10)	Male / Female
+department	VARCHAR2(20)	Department name
+designation	VARCHAR2(30)	Job title
+salary	NUMBER	Monthly salary
+location	VARCHAR2(20)	Work location
+joining_date	DATE	Date of joining
+email	VARCHAR2(50)	Email ID
+ 
+ 
+1001, Arun, Male, IT, Developer, 45000, Chennai, 2022-01-10, arun@company.com
+
+1002, Divya, Female, HR, HR Executive, 40000, Bangalore, 2021-05-15, divya@company.com
+
+1003, Mubeen, Male, IT, Senior Developer, 55000, Chennai, 2023-03-20, mubeen@company.com
+
+1004, Ravi, Male, Finance, Accountant, NULL, Mumbai, 2020-07-18, ravi@company.com
+
+1005, Anita, Female, Sales, Sales Executive, 38000, Delhi, 2022-09-12, anita@company.com
+
+1006, Kumar, Male, HR, Recruiter, 32000, Chennai, 2021-11-05, kumar@company.com
+
+1007, Divya, Female, IT, Tester, 40000, Bangalore, 2022-06-25, divya.it@company.com
+
+1008, Rahul, Male, IT, Developer, 45000, Chennai, 2020-03-14, NULL
+
+1009, Sneha, Female, Finance, Analyst, NULL, Mumbai, 2023-01-08, sneha@company.com
+
+1010, Amit, Male, Sales, Sales Manager, 60000, Delhi, 2019-12-01, amit@company.com
+
+1011, Pooja, Female, HR, HR Executive, 40000, Chennai, 2021-04-19, NULL
+
+1012, Ramesh, Male, IT, Support Engineer, 30000, Hyderabad, 2022-08-10, ramesh@company.com
+
+1013, Suresh, Male, IT, Developer, 45000, Chennai, 2020-10-30, suresh@company.com
+
+1014, Neha, Female, Sales, Sales Executive, 38000, Delhi, 2023-02-14, neha@company.com
+
+1015, Arun, Male, IT, Developer, 45000, Chennai, 2021-09-09, arun.it@company.com
+
+1016, Kiran, Male, Finance, Accountant, NULL, Mumbai, 2022-12-21, kiran@company.com
+
+1017, Meena, Female, HR, Recruiter, 32000, Bangalore, 2020-06-11, meena@company.com
+
+1018, Vijay, Male, IT, Tester, 35000, Hyderabad, 2023-04-01, NULL
+
+1019, Anita, Female, Sales, Sales Executive, 38000, Delhi, 2021-07-07, anita.sales@company.com
+
+1020, Rohit, Male, IT, Developer, 45000, Chennai, 2022-11-18, rohit@company.com
+
+1021, Sanjay, Male, IT, Developer, NULL, Chennai, 2020-02-02, NULL
+
+ 
+------------------------------------Queries-------------------------------------
+
+
+
+SQL> insert all
+  2  INTO employee VALUES
+  3  (1001, 'Arun', 'Male', 'IT', 'Developer', 45000, 'Chennai', DATE '2022-01-10', 'arun@company.com')
+  4  INTO employee VALUES
+  5  (1002, 'Divya', 'Female', 'HR', 'HR Executive', 40000, 'Bangalore', DATE '2021-05-15', 'divya@company.com')
+  6  INTO employee VALUES
+  7  (1003, 'Mubeen', 'Male', 'IT', 'Senior Developer', 55000, 'Chennai', DATE '2023-03-20', 'mubeen@company.com')
+  8  INTO employee VALUES
+  9  (1004, 'Ravi', 'Male', 'Finance', 'Accountant', 42000, 'Hyderabad', DATE '2020-08-12', 'ravi@company.com')
+ 10  INTO employee VALUES
+ 11  (1005, 'Sneha', 'Female', 'HR', 'Recruiter', 38000, 'Bangalore', DATE '2021-11-05', 'sneha@company.com')
+ 12  INTO employee VALUES
+ 13  (1006, 'Ajay', 'Male', 'IT', 'Tester', 35000, 'Pune', DATE '2022-06-15', 'ajay@company.com')
+ 14  INTO employee VALUES
+ 15  (1007, 'Kiran', 'Male', 'Finance', 'Analyst', 48000, 'Mumbai', DATE '2019-09-01', 'kiran@company.com')
+ 16  INTO employee VALUES
+ 17  (1008, 'Neha', 'Female', 'IT', 'Developer', 46000, 'Pune', DATE '2022-02-10', 'neha@company.com')
+ 18  INTO employee VALUES
+ 19  (1009, 'Suresh', 'Male', 'HR', 'Manager', 52000, 'Delhi', DATE '2018-07-01', 'suresh@company.com')
+ 20  INTO employee VALUES
+ 21  (1010, 'Rahul', 'Male', 'IT', 'Tester', 36000, 'Chennai', DATE '2021-04-18', 'rahul@company.com')
+ 22  INTO employee VALUES
+ 23  (1011, 'Anita', 'Female', 'HR', 'Recruiter', 39000, 'Bangalore', DATE '2022-09-12', 'anita@company.com')
+ 24  select * from dual;
+
+1)SQL> select * from employee;
+2)SQL> select emp_id, emp_name, department from employee;
+3)SQL> select emp_name, salary from employee;
+4)SQL> select * from employee
+  2  where salary >40000;
+5)SQL> select * from employee
+  2  where salary <= 35000;
+6)SQL> select * from employee
+  2  where salary = 45000;
+7)SQL> select * from employee
+  2  where joining_date > DATE '2022-01-01';
+8)SQL> select * from employee
+  2  where joining_date < Date '2021-01-01';
+9)SQL> select * from employee
+  2  where salary between 35000 and 50000;
+10)SQL> select * from employee
+  2  where salary not between 30000 and 45000;
+11)SQL> SELECT * FROM employee
+  2  WHERE joining_date BETWEEN DATE '2021-01-01' AND DATE '2022-12-31';
+12)SQL> SELECT * FROM employee
+  2  WHERE department IN ('IT', 'HR');
+13)SQL> SELECT * FROM employee
+  2  WHERE location IN ('Chennai', 'Bangalore', 'Hyderabad');
+14)SQL> SELECT * FROM employee
+  2  WHERE salary IN (32000, 38000, 40000);
+15)SQL> SELECT * FROM employee
+  2  WHERE location <> 'Mumbai';
+16)SQL> SELECT * FROM employee
+  2  WHERE department NOT IN ('IT', 'HR');
+17)SQL> SELECT * FROM employee
+  2  WHERE designation NOT IN ('Developer', 'Tester');
+18)SQL> SELECT * FROM employee
+  2  WHERE emp_name LIKE 'A%';
+19)SQL> SELECT * FROM employee
+  2  WHERE salary IS NULL;
+20)SQL> SELECT * FROM employee
+  2  WHERE email IS NULL;
+21)SQL> SELECT * FROM employee
+  2  WHERE salary IS NOT NULL;
+22)SQL> SELECT * FROM employee
+  2  WHERE email IS NOT NULL;
+23)SQL> SELECT * FROM employee
+  2  WHERE emp_name LIKE '%i';
+24)SQL> SELECT * FROM employee
+  2  WHERE emp_name LIKE '%vi%';
+25)SQL> SELECT * FROM employee
+  2  WHERE email LIKE '%@company.com';
+26)SQL> SELECT * FROM employee
+  2  WHERE designation LIKE '%Engineer';
+27)SQL> SELECT * FROM employee
+  2  ORDER BY salary ASC;
+28)SQL> SELECT * FROM employee
+  2  ORDER BY department ASC, salary DESC;
+29)SQL> SELECT * FROM employee
+  2  ORDER BY location ASC, emp_name ASC;
+30)SQL> SELECT * FROM employee
+  2  WHERE department = 'IT' AND salary > 45000;
+31)SQL> SELECT * FROM employee
+  2  WHERE department IN ('HR', 'Sales');
+32)SQL> UPDATE employee
+  2  SET salary = 50000
+  3  WHERE salary IS NULL;
+33)SQL> UPDATE employee
+  2  SET salary = salary + 5000
+  3  WHERE department = 'IT';
+34)SQL> SELECT emp_name, COUNT(*)
+  2  FROM employee
+  3  GROUP BY emp_name
+  4  HAVING COUNT(*) > 1;
+35)SQL> SELECT salary, COUNT(*)
+  2  FROM employee
+  3  GROUP BY salary
+  4  HAVING COUNT(*) > 1;
+36)SQL> SELECT department, location, COUNT(*)
+  2  FROM employee
+  3  GROUP BY department, location
+  4  HAVING COUNT(*) > 1;
+37)SQL> UPDATE employee
+  2  SET location = 'Hyderabad'
+  3  WHERE department = 'HR';
+COMMIT;
+38)SQL> SELECT * FROM employee
+  2  WHERE department <> 'IT';
+39)SQL> SELECT * FROM employee
+  2  WHERE department = 'IT' AND location = 'Chennai';
+40)SQL> SELECT * FROM employee
+  2  ORDER BY salary DESC, joining_date ASC;
+41)SQL> SELECT * FROM employee
+  2  ORDER BY salary DESC;
+42)SQL> SELECT * FROM employee
+  2  ORDER BY joining_date ASC;
+43)SQL> SELECT * FROM employee
+  2  ORDER BY emp_name ASC;
